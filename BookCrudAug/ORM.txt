@@ -1,0 +1,74 @@
+
+ORM - object relational mapping
+
+schema:Employee
+
+fields:[name,salary,department,email,phone]
+
+>ORM Query for creating an Employee
+   
+    :Employee.object.create(name="rahul",salary=56000,department="ba",email="rahul@gmail.com",phone=56789)
+
+
+
+
+>orm query for fetching all resources
+       >variable_name=ModelName.objects.all()
+       >all_employees=Employee.objects.all()
+
+
+>orm query for fetching a specific Employee
+     #Employee with id=356
+     >qs=Employee.objects.get(id=356)
+
+
+>orm query for filtering records
+      #Employee with department = "hr"
+      
+      >qs=Employee.objects.filter(department="hr")
+
+
+
+field_lookups
+< __lt
+
+>__gt
+
+<=__lte
+>=__gte
+
+fetch all Employee whose salary >=45000
+
+qs=Employee.objects.filter(salary__gte=45000)
+
+
+fetch all Employee whose salary >50000 and department="hr"
+
+>qs=Employee.objects.filter(salary__gt=50000,department="hr")
+
+>fetch all non Hr employees
+
+>qs=Employee.objects.exclude(department="hr")
+
+create()
+all()
+get()
+filter()
+exclude()
+
+>remove employee with id =201
+
+>Employee.objects.get(id=201).delete()
+
+>update employees name="haresh" salary =50000 whose id 500
+
+>Employee.objects.filter(id=500).update(name="haresh",salary=50000)
+
+django.db.models import Q
+
+qs=Books.objects.filter(Q(language="malayalam")| Q(language="hindi"))
+
+qs=Books.objects.filter(language__in=["malayalam","hindi"])
+
+        
+
